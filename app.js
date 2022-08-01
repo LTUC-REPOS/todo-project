@@ -1,28 +1,8 @@
-
-let userName = prompt("Hello, Please Enter your name ? ");
-console.log(userName);
-
-let gender = prompt("What is your Gender (male/female) ?");
-console.log(gender);
-if (!IsAValidGender(gender)) {
-    alert("Invalid Gender");
-    gender = prompt("What is your Gender (male/female) ?");
+function AskUserForData(message)
+{
+    let data = prompt(message);
+    return data;
 }
-console.log(gender);
-
-let age = prompt("Please Enter your age ")
-
-if (IsAValidAge(age)) {
-    alert("Invalid age");
-    age = prompt("Please Enter your age ")
-}
-let message = EditMessage(userName,gender,age);
-let msgConfirm = confirm("Would you like to receive a welcoming message?")
-if (msgConfirm) {
-    alert(message);
-}
-
-
 
 function IsAValidAge(age)
 {
@@ -38,13 +18,38 @@ function IsAValidGender(gender)
     return true;    
 }
 
+
 function EditMessage (name,gender,age)
 {
     let title = (gender == "male") ? "Mr" : "Ms";
-    let isValidGender =  (gender == "male" || gender == "female");
-    let message = (isValidGender) ? "Welcome " + title + " " + name + "Your Current age is " + age  : "Welcome!";
+    let message = (IsAValidGender(gender)) ? "Welcome " + title + " " + name + " Your Current age is " + age  : "Welcome " + name;
     return message;
 }
+
+
+function WelcomeMessage(message)
+{
+    let msgConfirm = confirm("Would you like to receive a welcoming message?");
+
+    if (!msgConfirm) 
+        return;
+    else
+    {
+        alert(message);
+    }
+}
+
+
+
+
+
+let userName = AskUserForData("Hello, Please Enter your name");
+let gender =  AskUserForData("What is your Gender (male/female) ?");
+let age = AskUserForData("Please Enter your age ");
+let message = EditMessage(userName,gender,age);
+WelcomeMessage(message);
+
+
 
 
 /************************* Phase 2  ******************************** */
