@@ -4,7 +4,7 @@ console.log(userName);
 
 let gender = prompt("What is your Gender (male/female) ?");
 console.log(gender);
-if (IsAValidGender(gender)) {
+if (!IsAValidGender(gender)) {
     alert("Invalid Gender");
     gender = prompt("What is your Gender (male/female) ?");
 }
